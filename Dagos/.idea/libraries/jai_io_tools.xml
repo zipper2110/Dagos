@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jai_io_tools">
+    <CLASSES>
+      <root url="jar://C:/Program Files (x86)/Sun Microsystems/JAI Image IO Tools 1.1/lib/clibwrapper_jiio.jar!/" />
+      <root url="jar://C:/Program Files (x86)/Sun Microsystems/JAI Image IO Tools 1.1/lib/jai_imageio.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

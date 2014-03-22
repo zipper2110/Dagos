@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Dagos Threshold:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Dagos_Threshold_jar</output-path>
+    <root id="archive" name="Dagos Threshold.jar">
+      <element id="module-output" name="Dagos Threshold" />
+      <element id="module-output" name="Common Classes" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Dagos Input:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Dagos_Input_jar</output-path>
+    <root id="archive" name="Dagos Input.jar">
+      <element id="module-output" name="Dagos Input" />
+      <element id="module-output" name="Common Classes" />
+    </root>
+  </artifact>
+</component>

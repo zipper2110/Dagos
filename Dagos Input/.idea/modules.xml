@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Common Classes/Common Classes.iml" filepath="$PROJECT_DIR$/../Common Classes/Common Classes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dagos Input.iml" filepath="$PROJECT_DIR$/Dagos Input.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Dagos MaskViewer/Dagos MaskViewer.iml" filepath="$PROJECT_DIR$/../Dagos MaskViewer/Dagos MaskViewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Dagos Threshold/Dagos Threshold.iml" filepath="$PROJECT_DIR$/../Dagos Threshold/Dagos Threshold.iml" />
+    </modules>
+  </component>
+</project>
+
