@@ -1,4 +1,4 @@
-package com.dagos.graphics;
+package com.dagos.graphics.display;
 
 import java.awt.*;
 

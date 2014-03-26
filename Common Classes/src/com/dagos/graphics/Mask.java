@@ -2,9 +2,10 @@ package com.dagos.graphics;
 
 import java.io.*;
 import java.nio.ByteBuffer;
+import java.nio.file.NoSuchFileException;
 
 /**
- * Created by Dmitry on 04.03.14.
+ * Created by Dmitry on 04.03.14
  */
 public class Mask {
     public static String FILE_EXTENTION = ".dgsmsk";
@@ -20,7 +21,8 @@ public class Mask {
     }
 
     public void save(File fileToSaveTo) throws IOException {
-        fileToSaveTo.createNewFile();
+        if (!fileToSaveTo.createNewFile())
+            throw new NoSuchFileException(fileToSaveTo.getAbsolutePath(), "", "can't create specified file");
         if (maskData.length == 0) return;
 
         int imageX = maskData.length;
@@ -39,9 +41,9 @@ public class Mask {
         dos.write(imagesCountBytes);
 
 
-        for (int k = 0; k < imagesCount; k++) {
-            for (int i = 0; i < imageX; i++) {
-                for (int j = 0; j < imageY; j++) {
+        for (int i = 0; i < imageX; i++) {
+            for (int j = 0; j < imageY; j++) {
+                for (int k = 0; k < imagesCount; k++) {
                     dos.writeBoolean(maskData[i][j][k]);
                 }
             }
