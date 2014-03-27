@@ -108,4 +108,17 @@ public class Mask {
     public void setPointValue(int x, int y, int sliceId, boolean value) {
         maskData[x][y][sliceId] = value;
     }
+
+    public int getPointsCount() {
+        int pointsCount = 0;
+
+        for (int k = 0; k < this.getSliceCount(); k++) {
+            for (int i = 0; i < this.getWitdh(); i++) {
+                for (int j = 0; j < this.getHeight(); j++) {
+                    if (maskData[i][j][k]) pointsCount++;
+                }
+            }
+        }
+        return pointsCount;
+    }
 }

@@ -13,7 +13,7 @@ import javax.vecmath.Point3d;
 public class SceneBuilderGreyQuads extends SceneBuilder {
 
     @Override
-    protected void buildScene(Double scale) {
+    protected void buildScene() {
         this.transformGroupMain.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
         this.transformGroupMain.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
 
@@ -26,7 +26,6 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
         f1.setTransformGroup(this.transformGroupMain);
         this.scene.addChild(f1);
 
-        this.scene.addChild(this.transformGroupMain);
 
         Transform3D temp = new Transform3D();
         this.transformGroupMain.getTransform(temp);
@@ -79,7 +78,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
             return new Shape3D();
 
         int numVerts = 24; // 6 faces * 1 quad * 4 vertices
-        int numVoxel = this.mask.getWitdh() * this.mask.getHeight() * this.mask.getSliceCount();
+        int numVoxel = this.mask.getPointsCount();
 
         int indexCount = numVerts * numVoxel;
         int vertexCount = numVoxel * 8;    // 8 vertices/corners of the box/voxel
@@ -108,7 +107,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
 
                         voxelIndices = getBoxQuadIndices(voxelOffset);
 
-                        voxelCoords = getBoxIndexedCoords(point.x - mask.getWitdh() / 2, point.y - mask.getHeight() / 2, point.sliceId - mask.getSliceCount() / 2);
+                        voxelCoords = getBoxIndexedCoords(point.x - mask.getWitdh() / 2, mask.getSliceCount() / 2 - point.sliceId, point.y - mask.getHeight() / 2);
                         voxelColors = getBoxIndexedColors(0.5f, 0.5f, 0.5f/*image.getPointValueFloat(point), image.getPointValueFloat(point), image.getPointValueFloat(point)*/);
                         voxelNormals = getBoxIndexedNormals();
 
