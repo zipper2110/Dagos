@@ -17,7 +17,8 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
         this.transformGroupMain.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
         this.transformGroupMain.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
 
-        Shape3D lungShape = getVisibleVoxelsQuad();
+        Shape3D lungShape = getVisibleVoxelsShape();
+        lungShape.setAppearance(getAppearance());
         lungShape.setPickable(true);
         this.transformGroupMain.addChild(lungShape);
 
@@ -36,9 +37,23 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
         BoundingSphere sphere = new BoundingSphere(new Point3d(0, 0, 0), 100000);
         background.setApplicationBounds(sphere);
         this.scene.addChild(background);
+        setLight();
+    }
 
+    private void setLight() {
         BoundingSphere bounds = new BoundingSphere(new Point3d(0, 0, 0), 500);
         Color3f lightColor = new Color3f(1.0f, 1.0f, 1.0f);
+        PointLight light3 = new PointLight();
+        light3.setEnable(true);
+        light3.setColor(lightColor);
+        light3.setPosition(0, 0, 0);
+        light3.setAttenuation(1.0f, 0.0f, 0.0f);
+        /*
+        light3.setDirection(light1Direction);
+        light3.setSpreadAngle((float)(Math.PI / 2));
+        light3.setConcentration(0.0f);*/
+        light3.setInfluencingBounds(bounds);
+        this.transformGroupMain.addChild(light3);
         /*
         Vector3f light1Direction = new Vector3f(0.0f, 1.0f, 0.0f);
         DirectionalLight light1  = new DirectionalLight (lightColor, light1Direction);
@@ -53,18 +68,6 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
         light2.setInfluencingBounds( bounds );
         this.transformGroupMain.addChild(light2);
         */
-        PointLight light3 = new PointLight();
-        light3.setEnable(true);
-        light3.setColor(lightColor);
-        light3.setPosition(0, 0, 0);
-        light3.setAttenuation(1.0f, 0.0f, 0.0f);
-        /*
-        light3.setDirection(light1Direction);
-        light3.setSpreadAngle((float)(Math.PI / 2));
-        light3.setConcentration(0.0f);*/
-        light3.setInfluencingBounds(bounds);
-        this.transformGroupMain.addChild(light3);
-
 /*
         AmbientLight ambientLightNode = new AmbientLight (lightColor);
         ambientLightNode.setInfluencingBounds (bounds);
@@ -72,7 +75,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
     }
 
 
-    private Shape3D getVisibleVoxelsQuad() {
+    protected Shape3D getVisibleVoxelsShape() {
         if (this.mask == null) return new Shape3D();
         if (this.mask.getWitdh() == 0 || this.mask.getHeight() == 0 || this.mask.getSliceCount() == 0)
             return new Shape3D();
@@ -107,7 +110,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
 
                         voxelIndices = getBoxQuadIndices(voxelOffset);
 
-                        voxelCoords = getBoxIndexedCoords(point.x - mask.getWitdh() / 2, mask.getSliceCount() / 2 - point.sliceId, point.y - mask.getHeight() / 2);
+                        voxelCoords = getBoxIndexedCoords((point.x * 2 - mask.getWitdh()), (mask.getSliceCount() - point.sliceId * 2), (point.y * 2 - mask.getHeight()));
                         voxelColors = getBoxIndexedColors(0.5f, 0.5f, 0.5f/*image.getPointValueFloat(point), image.getPointValueFloat(point), image.getPointValueFloat(point)*/);
                         voxelNormals = getBoxIndexedNormals();
 
@@ -123,7 +126,10 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
                 }
             }
         }
+        return new Shape3D(voxels);
+    }
 
+    private Appearance getAppearance() {
         Appearance app = new Appearance();
         Material mat = new Material();
         mat.setAmbientColor(new Color3f(0.0f, 0.0f, 1.0f));
@@ -131,7 +137,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
         mat.setSpecularColor(new Color3f(0.7f, 0.7f, 0.7f));
         app.setMaterial(mat);
 
-        return new Shape3D(voxels, app);
+        return app;
     }
 
     // Quad indices
@@ -158,7 +164,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
     }
 
     // (x, y, z) = translation
-    private float[] getBoxIndexedCoords(float x, float y, float z) {
+    protected float[] getBoxIndexedCoords(float x, float y, float z) {
         return new float[]{
                 // box top
                 1.0f + x, 1.0f + y, 1.0f + z,    // 0
@@ -175,7 +181,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
     }
 
     // (r, g, b) = color
-    private float[] getBoxIndexedColors(float r, float g, float b) {
+    protected float[] getBoxIndexedColors(float r, float g, float b) {
         return new float[]{
                 r, g, b,    // 0
                 r, g, b,    // 1
@@ -190,7 +196,7 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
     }
 
     // (r, g, b) = color
-    private float[] getBoxIndexedNormals() {
+    protected float[] getBoxIndexedNormals() {
         return new float[]{
                 -1, -1, -1,    // 0
                 1, 1, 1,     // 1

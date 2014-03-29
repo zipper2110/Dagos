@@ -12,18 +12,19 @@ import java.awt.event.MouseWheelListener;
 /**
  * Created by Dmitry on 02.03.14.
  */
-public class MaskViewer extends Canvas3D {
+public class MaskViewer3D extends Canvas3D {
 
     private SimpleUniverse universe;
     private SceneBuilder sceneBuilder;
 
     private double lastZoom = 0.002;
 
-    public MaskViewer() {
+    public MaskViewer3D() {
         super(SimpleUniverse.getPreferredConfiguration());
         setStereoEnable(true);
 
         sceneBuilder = new SceneBuilderGreyQuads();
+//        sceneBuilder = new SceneBuilderGreyTriangles();
 
         addMouseWheelListener(new MouseWheelListener() {
             @Override
