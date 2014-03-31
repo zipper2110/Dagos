@@ -18,4 +18,17 @@ public class Point {
         this.y = y;
         this.sliceId = sliceId;
     }
+
+    public boolean equals(Object object) {
+        if (object != null) {
+            if (this.getClass() == object.getClass()) {
+                Point point = (Point) object;
+
+                if (this.x == point.x && this.y == point.y && this.sliceId == point.sliceId) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -3,10 +3,13 @@ package com.dagos.graphics.display.maskviewer.scene;
 import com.dagos.graphics.Image;
 import com.dagos.graphics.Mask;
 import com.dagos.graphics.Point;
+import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
 
-import javax.media.j3d.BranchGroup;
-import javax.media.j3d.Transform3D;
-import javax.media.j3d.TransformGroup;
+import javax.media.j3d.*;
+import javax.vecmath.Color3f;
+import javax.vecmath.Point3d;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Dmitry on 26.03.14
@@ -19,11 +22,17 @@ public abstract class SceneBuilder {
     protected Image image;
     protected Point pointFrom;
     protected Point pointTo;
+
     protected Double scale = 1.0;
+    protected Color3f backgroundColor = new Color3f(1f, 1f, 1f);
+
 
     public SceneBuilder() {
-        scene = new BranchGroup();
-        transformGroupMain = new TransformGroup();
+        this.scene = new BranchGroup();
+        this.transformGroupMain = new TransformGroup();
+        this.transformGroupMain.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+        this.transformGroupMain.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+
         this.scene.addChild(this.transformGroupMain);
 
         setPointFrom(new Point(0, 0, 0));
@@ -39,9 +48,27 @@ public abstract class SceneBuilder {
     }
 
     public BranchGroup getScene(Double scale) {
-        setScale(scale);
         this.transformGroupMain.removeAllChildren();
-        buildScene();
+
+        Shape3D shape = getShape();
+        shape.setPickable(true);
+        shape.setAppearance(getAppearance());
+        this.transformGroupMain.addChild(shape);
+
+        MouseRotate f1 = new MouseRotate();
+        f1.setSchedulingBounds(new BoundingSphere());
+        f1.setTransformGroup(this.transformGroupMain);
+        this.scene.addChild(f1);
+
+        List<Light> lights = getLights();
+        for (Light light : lights) {
+            this.scene.addChild(light);
+        }
+
+        this.scene.addChild(getBackground());
+
+        setScale(scale);
+
         return scene;
     }
 
@@ -110,5 +137,60 @@ public abstract class SceneBuilder {
         return this.scale;
     }
 
-    protected abstract void buildScene();
+    protected abstract Shape3D getShape();
+
+    protected Background getBackground() {
+        Background background = new Background(backgroundColor);
+        background.setApplicationBounds(new BoundingSphere(new Point3d(0, 0, 0), 1000));
+
+        return background;
+    }
+
+    protected List<Light> getLights() {
+        List<Light> lights = new ArrayList<Light>();
+
+        BoundingSphere bounds = new BoundingSphere(new Point3d(0, 0, 0), 500);
+        Color3f lightColor = new Color3f(1.0f, 1.0f, 1.0f);
+        PointLight light3 = new PointLight();
+        light3.setEnable(true);
+        light3.setColor(lightColor);
+        light3.setPosition(0, 0, 0);
+        light3.setAttenuation(1.0f, 0.0f, 0.0f);
+        /*
+        light3.setDirection(light1Direction);
+        light3.setSpreadAngle((float)(Math.PI / 2));
+        light3.setConcentration(0.0f);*/
+        light3.setInfluencingBounds(bounds);
+        lights.add(light3);
+        /*
+        Vector3f light1Direction = new Vector3f(0.0f, 1.0f, 0.0f);
+        DirectionalLight light1  = new DirectionalLight (lightColor, light1Direction);
+        light1.setInfluencingBounds (bounds);
+        this.transformGroupMain.addChild (light1);*/
+/*
+        PointLight light2 = new PointLight();
+        light2.setEnable( true );
+        light2.setAttenuation(1.0f, 0.0f, 0.0f);
+        light2.setPosition(0, 0, -200);
+        light2.setColor(lightColor);
+        light2.setInfluencingBounds( bounds );
+        this.transformGroupMain.addChild(light2);
+        */
+/*
+        AmbientLight ambientLightNode = new AmbientLight (lightColor);
+        ambientLightNode.setInfluencingBounds (bounds);
+        this.scene.addChild (ambientLightNode);*/
+        return lights;
+    }
+
+    protected Appearance getAppearance() {
+        Appearance app = new Appearance();
+        Material mat = new Material();
+        mat.setAmbientColor(new Color3f(0.0f, 0.0f, 1.0f));
+        mat.setDiffuseColor(new Color3f(0.7f, 0.7f, 0.7f));
+        mat.setSpecularColor(new Color3f(0.7f, 0.7f, 0.7f));
+        app.setMaterial(mat);
+
+        return app;
+    }
 }

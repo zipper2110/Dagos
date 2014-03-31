@@ -2,7 +2,7 @@ package com.dagos.graphics.display;
 
 import com.dagos.graphics.Mask;
 import com.dagos.graphics.display.maskviewer.scene.SceneBuilder;
-import com.dagos.graphics.display.maskviewer.scene.SceneBuilderGreyQuads;
+import com.dagos.graphics.display.maskviewer.scene.SceneBuilderPointTriangles;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
 import javax.media.j3d.Canvas3D;
@@ -23,8 +23,9 @@ public class MaskViewer3D extends Canvas3D {
         super(SimpleUniverse.getPreferredConfiguration());
         setStereoEnable(true);
 
-        sceneBuilder = new SceneBuilderGreyQuads();
+//        sceneBuilder = new SceneBuilderGreyQuads();
 //        sceneBuilder = new SceneBuilderGreyTriangles();
+        sceneBuilder = new SceneBuilderPointTriangles();
 
         addMouseWheelListener(new MouseWheelListener() {
             @Override

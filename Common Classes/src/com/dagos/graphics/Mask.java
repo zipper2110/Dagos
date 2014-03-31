@@ -67,6 +67,10 @@ public class Mask implements Serializable {
         maskData[x][y][sliceId] = value;
     }
 
+    public void setPointValue(Point point, boolean value) {
+        setPointValue(point.x, point.y, point.sliceId, value);
+    }
+
     public int getPointsCount() {
         int pointsCount = 0;
 
@@ -78,5 +82,12 @@ public class Mask implements Serializable {
             }
         }
         return pointsCount;
+    }
+
+    public boolean hasPoint(Point point) {
+        return point.x > -1 && point.x < this.getWitdh() &&
+                point.y > -1 && point.y < this.getHeight() &&
+                point.sliceId > -1 && point.sliceId < this.getSliceCount() &&
+                this.getPointValue(point);
     }
 }
