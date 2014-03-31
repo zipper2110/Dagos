@@ -3,7 +3,7 @@ package com.simagis.maskViewer;
 import com.dagos.graphics.*;
 import com.dagos.graphics.Image;
 import com.dagos.graphics.Point;
-import com.sun.j3d.utils.universe.SimpleUniverse;
+import com.dagos.graphics.display.MaskViewer3D;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -11,12 +11,9 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.List;
 
 /**
  * Created by Dmitry on 05.03.14.
@@ -26,7 +23,7 @@ public class MainForm extends JFrame {
     private Mask dagosMask;
     private Image dagosImage;
     private Mask invertedMask;
-    private MaskViewer canvas;
+    private MaskViewer3D canvas;
 
     private Point pointFrom = new Point(0, 0, 0);
     private Point pointTo = new Point(0, 0, 0);
@@ -62,7 +59,7 @@ public class MainForm extends JFrame {
                 File importMaskFile = importFile();
                 if (importMaskFile != null) {
                     try {
-                        dagosMask = new Mask(importMaskFile);
+                        dagosMask = Mask.Load(importMaskFile);
                         invertedMask = new Mask(invertMask(dagosMask));
                         fieldXFrom.setText("1");
                         fieldXTo.setText(Integer.toString((invertedMask.getWitdh())));
@@ -111,7 +108,7 @@ public class MainForm extends JFrame {
 
         add("North", getSettingsPanel());
 
-        canvas = new MaskViewer(SimpleUniverse.getPreferredConfiguration());
+        canvas = new MaskViewer3D();
         add("Center", canvas);
 
         setVisible(true);
