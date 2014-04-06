@@ -15,7 +15,7 @@ public class SegmentationRegionGrowing implements SegmentationI {
     private double seedPointMinSlice = 0.11;
     private double seedPointMaxSlice = 0.3;
 
-    private int growingThreshold = 10;
+    private int growingThreshold = 25;
 
     @Override
     public Mask getMask(Image image) {
@@ -147,7 +147,7 @@ public class SegmentationRegionGrowing implements SegmentationI {
         // get slice index using min and max slice percentage
         int sliceCount = imageData[0][0].length;
 
-        return (int)Math.floor(seedPointMaxSlice * sliceCount);
+        return (int) Math.floor(seedPointMaxSlice * sliceCount);
     }
 
     private boolean[][][] getSegment(byte[][][] imageData, int growingThreshold, List<Point> seedPoints) {

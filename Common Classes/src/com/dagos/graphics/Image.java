@@ -46,7 +46,7 @@ public class Image {
 
     public void save(File fileToSaveTo) throws IOException {
         fileToSaveTo.createNewFile();
-        if(imageData.length == 0) return;
+        if (imageData.length == 0) return;
 
         int imageX = imageData.length;
         int imageY = imageData[0].length;
@@ -99,7 +99,7 @@ public class Image {
         for (int k = 0; k < imagesCount; k++) {
             for (int i = 0; i < imageX; i++) {
                 for (int j = 0; j < imageY; j++) {
-                    imageData[i][j][k] = (byte)bis.read();
+                    imageData[i][j][k] = (byte) bis.read();
                 }
             }
         }
@@ -116,7 +116,28 @@ public class Image {
         return imageData[point.x][point.y][point.sliceId];
     }
 
+    public int getPointValueInt(Point point) {
+        return imageData[point.x][point.y][point.sliceId] + 128;
+    }
+
+    public Color getPointColor(Point point) {
+        int greyValue = imageData[point.x][point.y][point.sliceId] + 128;
+        return new Color(greyValue, greyValue, greyValue);
+    }
+
     public float getPointValueFloat(Point point) {
         return ((float) ((int) imageData[point.x][point.y][point.sliceId] + 128)) / 255;
+    }
+
+    public int getSliceCount() {
+        return imageData[0][0].length;
+    }
+
+    public int getWitdh() {
+        return imageData.length;
+    }
+
+    public int getHeight() {
+        return imageData[0].length;
     }
 }

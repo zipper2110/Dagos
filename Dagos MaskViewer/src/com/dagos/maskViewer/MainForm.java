@@ -1,7 +1,7 @@
-package com.simagis.maskViewer;
+package com.dagos.maskViewer;
 
-import com.dagos.graphics.*;
 import com.dagos.graphics.Image;
+import com.dagos.graphics.Mask;
 import com.dagos.graphics.Point;
 import com.dagos.graphics.display.MaskViewer3D;
 
@@ -10,10 +10,11 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Created by Dmitry on 05.03.14.
@@ -59,7 +60,7 @@ public class MainForm extends JFrame {
                 File importMaskFile = importFile();
                 if (importMaskFile != null) {
                     try {
-                        dagosMask = Mask.Load(importMaskFile);
+                        dagosMask = new Mask(importMaskFile);
                         invertedMask = new Mask(invertMask(dagosMask));
                         fieldXFrom.setText("1");
                         fieldXTo.setText(Integer.toString((invertedMask.getWitdh())));
@@ -129,14 +130,14 @@ public class MainForm extends JFrame {
     private boolean[][][] invertMask(Mask mask) {
         boolean[][][] invertedMask = new boolean[mask.getWitdh()][mask.getHeight()][mask.getSliceCount()];
 
-        for(int k = 0; k < mask.getSliceCount(); k++) {
-            for(int i = 0; i < mask.getWitdh(); i++) {
-                for(int j = 0; j < mask.getHeight(); j++) {
-                    if(mask.getPointValue(i, j, k)) {
+        for (int k = 0; k < mask.getSliceCount(); k++) {
+            for (int i = 0; i < mask.getWitdh(); i++) {
+                for (int j = 0; j < mask.getHeight(); j++) {
+                    if (mask.getPointValue(i, j, k)) {
                         java.util.List<Point> neighborPoints = getNeighborPoints(
                                 new Point(i, j, k), mask.getWitdh(), mask.getHeight(), mask.getSliceCount());
-                        for(Point neighborPoint : neighborPoints) {
-                            if(!mask.getPointValue(neighborPoint)) {
+                        for (Point neighborPoint : neighborPoints) {
+                            if (!mask.getPointValue(neighborPoint)) {
                                 invertedMask[neighborPoint.x][neighborPoint.y][neighborPoint.sliceId] = true;
                             }
                         }
@@ -205,7 +206,7 @@ public class MainForm extends JFrame {
 
             private void setValue(DocumentEvent e) {
                 try {
-                    if(e.getDocument().getLength() == 0) return;
+                    if (e.getDocument().getLength() == 0) return;
                     Integer value = new Integer(e.getDocument().getText(0, e.getDocument().getLength()));
                     if (checkValue(value, 0, Math.min(invertedMask.getWitdh() - 1, pointTo.x))) {
                         pointFrom.x = value;

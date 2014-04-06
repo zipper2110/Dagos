@@ -8,6 +8,7 @@ import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
 import javax.media.j3d.*;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
+import javax.vecmath.Vector3f;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public abstract class SceneBuilder {
     protected Point pointTo;
 
     protected Double scale = 1.0;
+    protected Vector3f translation = new Vector3f(0, 0, 0);
     protected Color3f backgroundColor = new Color3f(1f, 1f, 1f);
 
 
@@ -48,6 +50,8 @@ public abstract class SceneBuilder {
     }
 
     public BranchGroup getScene(Double scale) {
+        this.scene.removeAllChildren();
+        this.scene.addChild(this.transformGroupMain);
         this.transformGroupMain.removeAllChildren();
 
         Shape3D shape = getShape();
@@ -127,14 +131,29 @@ public abstract class SceneBuilder {
     public void setScale(Double scale) {
         Transform3D temp = new Transform3D();
         transformGroupMain.getTransform(temp);
-        temp.setScale(scale);
-        transformGroupMain.setTransform(temp);
 
+        temp.setScale(scale);
+
+        transformGroupMain.setTransform(temp);
         this.scale = temp.getScale();
     }
 
     public Double getScale() {
         return this.scale;
+    }
+
+    public void setTranslation(Vector3f translation) {
+        Transform3D temp = new Transform3D();
+        transformGroupMain.getTransform(temp);
+
+        temp.setTranslation(translation);
+
+        transformGroupMain.setTransform(temp);
+        this.translation = translation;
+    }
+
+    public Vector3f getTranslation() {
+        return translation;
     }
 
     protected abstract Shape3D getShape();

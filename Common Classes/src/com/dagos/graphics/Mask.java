@@ -1,6 +1,7 @@
 package com.dagos.graphics;
 
 import java.io.*;
+import java.nio.ByteBuffer;
 import java.nio.file.NoSuchFileException;
 
 /**
@@ -15,32 +16,73 @@ public class Mask implements Serializable {
         this.maskData = maskData;
     }
 
+    public Mask(File dagosMaskFile) throws IOException {
+        this.maskData = load(dagosMaskFile);
+    }
+
     public void save(File fileToSaveTo) throws IOException {
         if (!fileToSaveTo.createNewFile())
             throw new NoSuchFileException(fileToSaveTo.getAbsolutePath(), "", "can't create specified file");
+        if (maskData.length == 0) return;
 
-        FileOutputStream fos = new FileOutputStream(fileToSaveTo);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        int imageX = maskData.length;
+        int imageY = maskData[0].length;
+        int imagesCount = maskData[0][0].length;
 
-        oos.writeObject(this);
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(fileToSaveTo), imageX * imageY * imagesCount);
+        DataOutputStream dos = new DataOutputStream(bos);
 
-        oos.close();
+        byte[] imageXBytes = ByteBuffer.allocate(4).putInt(imageX).array();
+        byte[] imageYBytes = ByteBuffer.allocate(4).putInt(imageY).array();
+        byte[] imagesCountBytes = ByteBuffer.allocate(4).putInt(imagesCount).array();
+
+        dos.write(imageXBytes);
+        dos.write(imageYBytes);
+        dos.write(imagesCountBytes);
+
+
+        for (int i = 0; i < imageX; i++) {
+            for (int j = 0; j < imageY; j++) {
+                for (int k = 0; k < imagesCount; k++) {
+                    dos.writeBoolean(maskData[i][j][k]);
+                }
+            }
+        }
+        dos.close();
     }
 
-    public static Mask Load(File fileToLoadFrom) throws IOException {
-        if (!fileToLoadFrom.exists()) throw new FileNotFoundException("File doesn't exist");
-
-        Mask mask = null;
+    private boolean[][][] load(File fileToLoadFrom) throws IOException {
         FileInputStream fis = new FileInputStream(fileToLoadFrom);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        try {
-            mask = (Mask) ois.readObject();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            ois.close();
+
+        byte[] byteIntBuffer = new byte[4];
+        ByteBuffer wrapper;
+
+        fis.read(byteIntBuffer, 0, 4);
+        wrapper = ByteBuffer.wrap(byteIntBuffer);
+        int imageX = wrapper.getInt();
+
+        fis.read(byteIntBuffer, 0, 4);
+        wrapper = ByteBuffer.wrap(byteIntBuffer);
+        int imageY = wrapper.getInt();
+
+        fis.read(byteIntBuffer, 0, 4);
+        wrapper = ByteBuffer.wrap(byteIntBuffer);
+        int imagesCount = wrapper.getInt();
+
+        DataInputStream dis = new DataInputStream(new BufferedInputStream(fis, imageX * imageY));
+
+        boolean[][][] maskData = new boolean[imageX][imageY][imagesCount];
+
+        for (int k = 0; k < imagesCount; k++) {
+            for (int i = 0; i < imageX; i++) {
+                for (int j = 0; j < imageY; j++) {
+                    maskData[i][j][k] = dis.readBoolean();
+                }
+            }
         }
-        return mask;
+        dis.close();
+
+        return maskData;
     }
 
     public int getSliceCount() {

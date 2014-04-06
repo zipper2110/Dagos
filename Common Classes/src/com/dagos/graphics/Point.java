@@ -19,6 +19,10 @@ public class Point {
         this.sliceId = sliceId;
     }
 
+    public int hashCode() {
+        return this.x + this.y + this.sliceId;
+    }
+
     public boolean equals(Object object) {
         if (object != null) {
             if (this.getClass() == object.getClass()) {
