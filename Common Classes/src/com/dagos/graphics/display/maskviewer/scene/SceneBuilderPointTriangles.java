@@ -3,6 +3,8 @@ package com.dagos.graphics.display.maskviewer.scene;
 import com.dagos.graphics.Mask;
 import com.dagos.graphics.Point;
 
+import javax.media.j3d.Appearance;
+import javax.media.j3d.PolygonAttributes;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.TriangleArray;
 import java.util.*;
@@ -44,15 +46,15 @@ public class SceneBuilderPointTriangles extends SceneBuilder {
                 Collection<Point> closestPoints = getNeighborPoints(currentLine);
                 for (Point lineNeighborPoint : closestPoints) {
                     Triangle newTriangle = new Triangle(currentLine.start, currentLine.end, lineNeighborPoint);
-                    if (triangles.add(newTriangle)) {
-                        if (currentLine.start.sliceId != 0 || lineNeighborPoint.sliceId != 0) {
+                    if (currentLine.point3 == null ||
+                            !(triangleIntersectLine(newTriangle, new Line(currentLine.start, currentLine.point3)) ||
+                                    triangleIntersectLine(newTriangle, new Line(currentLine.end, currentLine.point3)))) {
+                        if (triangles.add(newTriangle)) {
                             lines.add(new Line(currentLine.start, lineNeighborPoint, currentLine.end));
-                        }
-                        if (currentLine.end.sliceId != 0 || lineNeighborPoint.sliceId != 0) {
                             lines.add(new Line(currentLine.end, lineNeighborPoint, currentLine.start));
+                            drawedPointsMask.setPointValue(lineNeighborPoint, true);
+                            break;
                         }
-                        drawedPointsMask.setPointValue(lineNeighborPoint, true);
-                        break;
                     }
                 }
             }
@@ -65,7 +67,7 @@ public class SceneBuilderPointTriangles extends SceneBuilder {
         int numVoxel = triangles.size();
 
         int vertexCount = numVerts * numVoxel;
-        int vertexFormat = TriangleArray.COORDINATES | TriangleArray.NORMALS | TriangleArray.COLOR_3;
+        int vertexFormat = TriangleArray.COORDINATES | TriangleArray.NORMALS /*| TriangleArray.COLOR_3*/;
 
         // One geometry for all visible voxels
         voxels = new TriangleArray(vertexCount, vertexFormat);
@@ -73,23 +75,93 @@ public class SceneBuilderPointTriangles extends SceneBuilder {
         int voxelOffset = 0;
 
         float[] voxelCoords;
-        float[] voxelColors;
+        //float[] voxelColors;
         float[] voxelNormals;
 
         Point boundsPoint = new Point(mask.getWitdh(), mask.getHeight(), mask.getSliceCount());
         for (Triangle triangle : triangles) {
             voxelCoords = getTriangleCoords(triangle, boundsPoint);
             voxelNormals = getTriangleNormals(triangle);
-            voxelColors = getTriangleColors((float) Math.random(), (float) Math.random(), (float) Math.random());
+            //voxelColors = getTriangleColors((float) Math.random(), (float) Math.random(), (float) Math.random());
 
             voxels.setCoordinates(voxelOffset, voxelCoords);
             voxels.setNormals(voxelOffset, voxelNormals);
-            voxels.setColors(voxelOffset, voxelColors);
+            //voxels.setColors(voxelOffset, voxelColors);
 
             voxelOffset += numVerts;
         }
 
         return new Shape3D(voxels);
+    }
+
+    private boolean trianglesIntersect(Triangle triangle1, Triangle triangle2) {
+        return linesIntersect(triangle1.point1, triangle1.point2, triangle2.point1, triangle2.point2) ||
+                linesIntersect(triangle1.point1, triangle1.point2, triangle2.point2, triangle2.point3) ||
+                linesIntersect(triangle1.point1, triangle1.point2, triangle2.point3, triangle2.point1) ||
+
+                linesIntersect(triangle1.point2, triangle1.point3, triangle2.point1, triangle2.point2) ||
+                linesIntersect(triangle1.point2, triangle1.point3, triangle2.point2, triangle2.point3) ||
+                linesIntersect(triangle1.point2, triangle1.point3, triangle2.point3, triangle2.point1) ||
+
+                linesIntersect(triangle1.point3, triangle1.point1, triangle2.point1, triangle2.point2) ||
+                linesIntersect(triangle1.point3, triangle1.point1, triangle2.point2, triangle2.point3) ||
+                linesIntersect(triangle1.point3, triangle1.point1, triangle2.point3, triangle2.point1);
+    }
+
+    private boolean triangleIntersectLine(Triangle triangle, Line line) {
+        return linesIntersect(triangle.point1, triangle.point2, line.start, line.end) ||
+                linesIntersect(triangle.point2, triangle.point3, line.start, line.end) ||
+                linesIntersect(triangle.point3, triangle.point1, line.start, line.end);
+    }
+
+    private boolean linesIntersect(Point line1Point1, Point line1Point2, Point line2Point1, Point line2Point2) {
+        if (line1Point1.equals(line2Point1) ||
+                line1Point2.equals(line2Point2) ||
+                line1Point1.equals(line2Point2) ||
+                line1Point2.equals(line2Point1)
+                ) {
+            return false;
+        }
+
+        Point vector1 = new Point(line1Point2.x - line1Point1.x, line1Point2.y - line1Point1.y, line1Point2.sliceId - line1Point1.sliceId);
+        Point vector2 = new Point(line2Point2.x - line2Point1.x, line2Point2.y - line2Point1.y, line2Point2.sliceId - line2Point1.sliceId);
+        Point vector3 = new Point(line2Point1.x - line1Point2.x, line2Point1.y - line1Point2.y, line2Point1.sliceId - line1Point2.sliceId);
+//        Vector3f v1 = new Vector3f((line1Point2.x - line1Point1.x) * 0.9f, (line1Point2.y - line1Point1.y) * 0.9f, (line1Point2.sliceId - line1Point1.sliceId) * 0.9f);
+//        Vector3f v2 = new Vector3f(line2Point1.x - line1Point2.x, line2Point1.y - line1Point2.y, line2Point1.sliceId - line1Point2.sliceId);
+//        Vector3f v3 = new Vector3f(line2Point1.x - line1Point2.x, line2Point1.y - line1Point2.y, line2Point1.sliceId - line1Point2.sliceId);
+
+        // parallel lines
+        if (vector1.x == vector2.x && vector1.y == vector2.y && vector1.sliceId == vector2.sliceId) {
+            return false;
+        }
+        if (vector1.x == -vector2.x && vector1.y == -vector2.y && vector1.sliceId == -vector2.sliceId) {
+            return false;
+        }
+
+        int determinant =
+                vector1.x * vector2.y * vector3.sliceId -
+                        vector1.x * vector3.y * vector2.sliceId +
+                        vector3.x * vector1.y * vector2.sliceId -
+                        vector2.x * vector1.y * vector3.sliceId +
+                        vector2.x * vector3.y * vector1.sliceId -
+                        vector3.x * vector2.y * vector1.sliceId;
+        if (determinant == 0) {
+            if (Math.max(line1Point1.x, line1Point2.x) < Math.min(line2Point1.x, line2Point2.x) ||
+                    Math.max(line2Point1.x, line2Point2.x) < Math.min(line1Point1.x, line1Point2.x)) {
+                return false;
+            }
+            if (Math.max(line1Point1.y, line1Point2.y) < Math.min(line2Point1.y, line2Point2.y) ||
+                    Math.max(line2Point1.y, line2Point2.y) < Math.min(line1Point1.y, line1Point2.y)) {
+                return false;
+            }
+            if (Math.max(line1Point1.sliceId, line1Point2.sliceId) < Math.min(line2Point1.sliceId, line2Point2.sliceId) ||
+                    Math.max(line2Point1.sliceId, line2Point2.sliceId) < Math.min(line1Point1.sliceId, line1Point2.sliceId)) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private Point getUndrawedPoint() {
@@ -199,7 +271,8 @@ public class SceneBuilderPointTriangles extends SceneBuilder {
             }
         }
 
-        return sortLineNeighborPoints(line, lineNeighborPoints);
+//        return sortLineNeighborPoints(line, lineNeighborPoints);
+        return lineNeighborPoints;
     }
 
     private Collection<Point> sortLineNeighborPoints(final Line line, List<Point> lineNeighborPoints) {
@@ -423,5 +496,15 @@ public class SceneBuilderPointTriangles extends SceneBuilder {
             }
             return false;
         }
+    }
+
+
+    @Override
+    protected Appearance getAppearance() {
+        Appearance app = super.getAppearance();
+        PolygonAttributes pa = new PolygonAttributes();
+        pa.setCullFace(PolygonAttributes.CULL_NONE);
+        app.setPolygonAttributes(pa);
+        return app;
     }
 }

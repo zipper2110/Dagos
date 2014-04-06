@@ -8,25 +8,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="ac43b1d8-5ed7-4903-926c-f4091e6b6807" name="Default" comment="Added new SceneBuilder, doesn't work well though. Also refactored SceneBuilder classes to be more agile.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Dagos MaskViewer2D/Dagos MaskViewer2D.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Dagos MaskViewer2D/src/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Dagos MaskViewer2D/src/com/dagos/maskViewer2D/MainForm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTrianglesDebug.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Image.java" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Image.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Dagos MaskViewer/src/Main.java" afterPath="$PROJECT_DIR$/../Dagos MaskViewer/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Mask.java" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Mask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer3D.java" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer3D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Point.java" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Point.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilder.java" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilder.java" />
+    <list default="true" readonly="true" id="ac43b1d8-5ed7-4903-926c-f4091e6b6807" name="Default" comment="Added new app MaskViewer2D that shows 2d lung slices with mask on it;&#10;Mastered SceneBuilderPointTriangles.java, works almost fine;&#10;Mask now saves/loads data to file through byte stream, not via serialization">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Test Mask Generator/src/Main.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Test Mask Generator/src/com/dagos/maskGenerator/MainForm.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Test Mask Generator/Test Mask Generator.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTriangles.java" afterPath="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTriangles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Dagos Threshold/src/com/dagos/threshold/SegmentationRegionGrowing.java" afterPath="$PROJECT_DIR$/../Dagos Threshold/src/com/dagos/threshold/SegmentationRegionGrowing.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\SkyDrive\Документы\Projects\Desktop\Dagos\Dagos MaskViewer\src\com\simagis\maskViewer\MainForm.java" afterPath="$PROJECT_DIR$/../Dagos MaskViewer/src/com/dagos/maskViewer/MainForm.java" />
     </list>
     <ignored path="Dagos Input.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,8 +82,8 @@
       <file leaf-file-name="MaskViewer3D.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer3D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="1802">
-              <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+              <caret line="69" column="27" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -104,9 +92,18 @@
       <file leaf-file-name="SceneBuilderPointTriangles.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTriangles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48325893" vertical-offset="179" max-vertical-offset="7174">
-              <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-              <folding />
+            <state vertical-scroll-proportion="0.7244318" vertical-offset="1122" max-vertical-offset="8704">
+              <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+              <folding>
+                <element signature="e#725#735#0" expanded="true" />
+                <element signature="e#779#785#0" expanded="true" />
+                <element signature="e#9201#9208#0" expanded="true" />
+                <element signature="e#9262#9269#0" expanded="true" />
+                <element signature="e#12780#12787#0" expanded="true" />
+                <element signature="e#13592#13599#0" expanded="true" />
+                <element signature="e#13600#14520#0" expanded="true" />
+                <element signature="e#14509#14510#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,7 +141,6 @@
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer.java" />
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderGreyTriangles.java" />
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderGreyQuads.java" />
-        <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Mask.java" />
         <option value="$PROJECT_DIR$/../Dagos MaskViewer/src/com/simagis/maskViewer/MainForm.java" />
         <option value="$PROJECT_DIR$/../Dagos MaskViewer/src/Main.java" />
         <option value="$PROJECT_DIR$/../Dagos MaskViewer2D/src/Main.java" />
@@ -155,7 +151,12 @@
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTrianglesDebug.java" />
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer3D.java" />
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Point.java" />
+        <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/Main.java" />
+        <option value="$PROJECT_DIR$/../Test Mask Generator/src/Main.java" />
+        <option value="$PROJECT_DIR$/../Test Mask Generator/src/com/dagos/maskGenerator/MainForm.java" />
+        <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Mask.java" />
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilder.java" />
+        <option value="$PROJECT_DIR$/../Dagos MaskViewer/src/com/dagos/maskViewer/MainForm.java" />
         <option value="$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTriangles.java" />
       </list>
     </option>
@@ -163,8 +164,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -222,9 +223,47 @@
               <option name="myItemId" value="Dagos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+              <option name="myItemId" value="Dagos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test Mask Generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dagos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test Mask Generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dagos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test Mask Generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maskGenerator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -275,48 +314,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos MaskViewer2D" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos MaskViewer2D" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos MaskViewer2D" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maskViewer2D" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Dagos MaskViewer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -351,12 +348,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="maskViewer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dagos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -447,7 +438,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Dagos MaskViewer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Test Mask Generator" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -497,7 +488,7 @@
       <recent name="E:\SkyDrive\Документы\Projects\Desktop\Dagos\Dagos MaskViewer2D" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DagosMaskViewer2D">
+  <component name="RunManager" selected="Application.DagosMaskViewer">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -533,19 +524,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -571,6 +549,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -731,12 +722,35 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="5">
+    <configuration default="false" name="TestMaskGenerator" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Test Mask Generator" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.DagosInput" />
       <item index="1" class="java.lang.String" itemvalue="Application.DagosThreshold" />
       <item index="2" class="java.lang.String" itemvalue="Application.DagosMaskViewer" />
       <item index="3" class="java.lang.String" itemvalue="Application.JOGL test" />
       <item index="4" class="java.lang.String" itemvalue="Application.DagosMaskViewer2D" />
+      <item index="5" class="java.lang.String" itemvalue="Application.TestMaskGenerator" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -807,11 +821,15 @@
       <created>1396239193820</created>
       <updated>1396239193820</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added new app MaskViewer2D that shows 2d lung slices with mask on it;&#10;Mastered SceneBuilderPointTriangles.java, works almost fine;&#10;Mask now saves/loads data to file through byte stream, not via serialization">
+      <created>1396789288744</created>
+      <updated>1396789288744</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -820,7 +838,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3347413" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33385828" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27943486" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -830,13 +848,13 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18390192" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35930735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18381241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35784313" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5735931" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -855,13 +873,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28696924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27943486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27943486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -885,7 +903,8 @@
     <MESSAGE value="Fixed non-working things like zoom" />
     <MESSAGE value="Changed Mask save-load implementation to one through serialization, it's now simplier" />
     <MESSAGE value="Added new SceneBuilder, doesn't work well though. Also refactored SceneBuilder classes to be more agile." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new SceneBuilder, doesn't work well though. Also refactored SceneBuilder classes to be more agile." />
+    <MESSAGE value="Added new app MaskViewer2D that shows 2d lung slices with mask on it;&#10;Mastered SceneBuilderPointTriangles.java, works almost fine;&#10;Mask now saves/loads data to file through byte stream, not via serialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new app MaskViewer2D that shows 2d lung slices with mask on it;&#10;Mastered SceneBuilderPointTriangles.java, works almost fine;&#10;Mask now saves/loads data to file through byte stream, not via serialization" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -900,12 +919,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTrianglesDebug.java</url>
-          <line>150</line>
+          <line>151</line>
           <properties />
           <option name="timeStamp" value="71" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../Test Mask Generator/src/com/dagos/maskGenerator/MainForm.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="134" />
+      <option name="time" value="149" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -913,27 +938,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Dagos Threshold/src/com/dagos/threshold/MainForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="323">
-          <caret line="11" column="5" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/ImageViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323">
-          <caret line="13" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323">
-          <caret line="13" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Image.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1309">
@@ -1130,13 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Dagos Threshold/src/com/dagos/threshold/MainForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06560284" vertical-offset="1000" max-vertical-offset="1564">
-          <caret line="78" column="62" selection-start-line="78" selection-start-column="62" selection-end-line="78" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="45" max-vertical-offset="9027">
@@ -1156,6 +1153,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1163,6 +1161,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2712766" vertical-offset="0" max-vertical-offset="564">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,6 +1176,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1203" max-vertical-offset="2720">
           <caret line="85" column="56" selection-start-line="85" selection-start-column="56" selection-end-line="85" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1162#1926#0" expanded="false" />
+            <element signature="e#1915#1916#0" expanded="false" />
+            <element signature="e#1162#1926#0" expanded="false" />
+            <element signature="e#1915#1916#0" expanded="false" />
+            <element signature="e#2071#2866#0" expanded="false" />
+            <element signature="e#2855#2856#0" expanded="false" />
+            <element signature="e#3012#3214#0" expanded="false" />
+            <element signature="e#3203#3204#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1191,20 +1201,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="804" max-vertical-offset="1598">
           <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Dagos MaskViewer/src/com/dagos/maskViewer/MainForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2359" max-vertical-offset="6137">
-          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Mask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1390" max-vertical-offset="2091">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#726#727#0" expanded="false" />
+            <element signature="e#757#758#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1222,8 +1223,8 @@
           <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="316" selection-end-column="9" />
           <folding>
             <element signature="e#559#569#0" expanded="true" />
-            <element signature="e#4049#4056#0" expanded="true" />
-            <element signature="e#4110#4117#0" expanded="true" />
+            <element signature="e#4051#4058#0" expanded="true" />
+            <element signature="e#4112#4119#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1232,13 +1233,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40865386" vertical-offset="204" max-vertical-offset="2380">
           <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,6 +1241,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1152" max-vertical-offset="2125">
           <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="101" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1256,27 +1252,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Test Mask Generator/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Dagos Threshold/src/com/dagos/threshold/MainForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="1564">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/io/DataOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="398" max-vertical-offset="6613">
+          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
+          <folding>
+            <element signature="e#1269#1270#0" expanded="false" />
+            <element signature="e#1295#1296#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Test Mask Generator/src/com/dagos/maskGenerator/MainForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="451" max-vertical-offset="1207">
+          <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/MaskViewer3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="838" max-vertical-offset="1513">
-          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1513">
+          <caret line="69" column="27" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Dagos MaskViewer/src/com/dagos/maskViewer/MainForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20376712" vertical-offset="2652" max-vertical-offset="6137">
+          <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Mask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1131" max-vertical-offset="2057">
+          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8253425" vertical-offset="79" max-vertical-offset="697">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="536" max-vertical-offset="3315">
-          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+        <state vertical-scroll-proportion="1.4366438" vertical-offset="2289" max-vertical-offset="3315">
+          <caret line="210" column="29" selection-start-line="210" selection-start-column="29" selection-end-line="210" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Common Classes/src/com/dagos/graphics/display/maskviewer/scene/SceneBuilderPointTriangles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48325893" vertical-offset="179" max-vertical-offset="7174">
-          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-          <folding />
+        <state vertical-scroll-proportion="0.7244318" vertical-offset="1122" max-vertical-offset="8704">
+          <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+          <folding>
+            <element signature="e#725#735#0" expanded="true" />
+            <element signature="e#779#785#0" expanded="true" />
+            <element signature="e#9201#9208#0" expanded="true" />
+            <element signature="e#9262#9269#0" expanded="true" />
+            <element signature="e#12780#12787#0" expanded="true" />
+            <element signature="e#13592#13599#0" expanded="true" />
+            <element signature="e#13600#14520#0" expanded="true" />
+            <element signature="e#14509#14510#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1334,7 +1397,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Dagos MaskViewer</last-edited>
+          <last-edited>Test Mask Generator</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

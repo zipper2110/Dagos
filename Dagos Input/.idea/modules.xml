@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/../Dagos MaskViewer/Dagos MaskViewer.iml" filepath="$PROJECT_DIR$/../Dagos MaskViewer/Dagos MaskViewer.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Dagos MaskViewer2D/Dagos MaskViewer2D.iml" filepath="$PROJECT_DIR$/../Dagos MaskViewer2D/Dagos MaskViewer2D.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Dagos Threshold/Dagos Threshold.iml" filepath="$PROJECT_DIR$/../Dagos Threshold/Dagos Threshold.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Test Mask Generator/Test Mask Generator.iml" filepath="$PROJECT_DIR$/../Test Mask Generator/Test Mask Generator.iml" />
     </modules>
   </component>
 </project>
