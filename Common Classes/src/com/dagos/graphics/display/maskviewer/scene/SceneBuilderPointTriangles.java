@@ -225,7 +225,7 @@ public class SceneBuilderPointTriangles extends SceneBuilder {
         tempNeighborPoints.add(new Point(point.x - 1, point.y - 1, point.sliceId - 1));
 
         for (Point neighborPoint : tempNeighborPoints) {
-            if (mask.hasPoint(neighborPoint)) {
+            if (mask.hasPoint(neighborPoint) && mask.getPointValue(neighborPoint)) {
                 neighborPoints.add(neighborPoint);
             }
         }

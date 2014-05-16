@@ -2,7 +2,6 @@ package com.dagos.graphics.display;
 
 import com.dagos.graphics.Image;
 import com.dagos.graphics.Mask;
-import com.dagos.graphics.Point;
 
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
@@ -37,6 +36,7 @@ public class MaskViewer2D extends Canvas implements MouseWheelListener {
     }
 
     public void displaySlice(int sliceId) {
+
         if (mask == null || image == null) return;
         if (image.getSliceCount() < 1 || mask.getSliceCount() < 1 || image.getSliceCount() != mask.getSliceCount())
             return;
@@ -44,41 +44,40 @@ public class MaskViewer2D extends Canvas implements MouseWheelListener {
         if (sliceId > image.getSliceCount() - 1) sliceId = image.getSliceCount() - 1;
         this.sliceId = sliceId;
 
-        int canvasHeight = getHeight();
-        int canvasWidth = getWidth();
         int imageHeight = image.getHeight();
         int imageWidth = image.getWitdh();
 
-        float heightRatio = (float) imageHeight / canvasHeight;
-        float widthRatio = (float) imageWidth / canvasWidth;
+        float heightRatio = (float) imageHeight / getHeight();
+        float widthRatio = (float) imageWidth / getWidth();
 
         float ratio = Math.max(heightRatio, widthRatio);
 
-        float sliceImageWidth = image.getWitdh() / ratio;
-        float sliceImageHeight = image.getHeight() / ratio;
+        BufferedImage sliceImage = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
 
-        BufferedImage sliceImage = new BufferedImage(
-                new Double(Math.ceil(image.getWitdh() / ratio)).intValue(),
-                new Double(Math.ceil(image.getHeight() / ratio)).intValue(),
-                BufferedImage.TYPE_INT_RGB);
+        int imagePixelColor, maskColor, red;
+        Color pixelColor;
 
-
-        for (int i = 0; i < sliceImageWidth; i++) {
-            for (int j = 0; j < sliceImageHeight; j++) {
-                Point currentPoint = new Point((int) Math.floor(i * ratio), (int) Math.floor(j * ratio), sliceId);
-                int imagePixelColor = image.getPointValueInt(currentPoint);
-                int maskColor = 0;
-                if (mask.getPointValue(currentPoint)) {
+        for (int i = 0; i < imageWidth; i++) {
+            for (int j = 0; j < imageHeight; j++) {
+                imagePixelColor = image.getPointValueInt(i, j, sliceId);
+                maskColor = 0;
+                if (mask.getPointValue(i, j, sliceId)) {
                     maskColor = 150;
                 }
-                int red = imagePixelColor + maskColor;
+                red = imagePixelColor + maskColor;
                 if (red > 255) red = 255;
-                Color pixelColor = new Color(red, imagePixelColor, imagePixelColor);
+                pixelColor = new Color(red, imagePixelColor, imagePixelColor);
                 sliceImage.setRGB(i, j, pixelColor.getRGB());
             }
         }
 
-        this.getGraphics().drawImage(sliceImage, 0, 0, null);
+        this.getGraphics().drawImage(
+                sliceImage.getScaledInstance(
+                        (int) (imageWidth / ratio),
+                        (int) (imageHeight / ratio),
+                        BufferedImage.SCALE_FAST),
+                0, 0, null
+        );
     }
 
     @Override

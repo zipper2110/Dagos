@@ -120,6 +120,10 @@ public class Image {
         return imageData[point.x][point.y][point.sliceId] + 128;
     }
 
+    public int getPointValueInt(int x, int y, int sliceId) {
+        return imageData[x][y][sliceId] + 128;
+    }
+
     public Color getPointColor(Point point) {
         int greyValue = imageData[point.x][point.y][point.sliceId] + 128;
         return new Color(greyValue, greyValue, greyValue);

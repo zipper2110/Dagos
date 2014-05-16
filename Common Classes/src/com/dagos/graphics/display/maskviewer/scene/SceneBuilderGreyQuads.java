@@ -1,5 +1,6 @@
 package com.dagos.graphics.display.maskviewer.scene;
 
+import com.dagos.graphics.Mask;
 import com.dagos.graphics.Point;
 
 import javax.media.j3d.IndexedQuadArray;
@@ -13,6 +14,8 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
 
     @Override
     protected Shape3D getShape() {
+        if (pathologyMask == null)
+            pathologyMask = new Mask(new boolean[mask.getWitdh()][mask.getHeight()][mask.getSliceCount()]);
         if (this.mask == null) return new Shape3D();
         if (this.mask.getWitdh() == 0 || this.mask.getHeight() == 0 || this.mask.getSliceCount() == 0)
             return new Shape3D();
@@ -48,7 +51,11 @@ public class SceneBuilderGreyQuads extends SceneBuilder {
                         voxelIndices = getBoxQuadIndices(voxelOffset);
 
                         voxelCoords = getBoxIndexedCoords((point.x * 2 - mask.getWitdh()), (mask.getSliceCount() - point.sliceId * 2), (point.y * 2 - mask.getHeight()));
-                        voxelColors = getBoxIndexedColors(0.5f, 0.5f, 0.5f/*image.getPointValueFloat(point), image.getPointValueFloat(point), image.getPointValueFloat(point)*/);
+                        if (pathologyMask.getPointValue(point)) {
+                            voxelColors = getBoxIndexedColors(1f, 0.2f, 0.2f);
+                        } else {
+                            voxelColors = getBoxIndexedColors(0.5f, 0.5f, 0.5f);
+                        }
                         voxelNormals = getBoxIndexedNormals();
 
                         voxels.setCoordinateIndices(indexOffset, voxelIndices);

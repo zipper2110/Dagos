@@ -13,26 +13,19 @@ import java.io.IOException;
 /**
  * Created by Dmitry on 02.03.14.
  */
-public class MainForm extends JFrame {
+public class MainForm extends com.dagos.MainForm {
 
     private Image dagosImage;
     private Mask dagosMask;
 
-    public MainForm() {
-        super("Dagos Threshold");
-        createForm();
-    }
-
     public void createForm() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         setLayout(new FlowLayout());
 
         JButton openImageButton = new JButton("Open Dagos image");
         openImageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                File importImageFile = importImage();
+                File importImageFile = importFile();
                 if (importImageFile != null) {
                     try {
                         dagosImage = new Image(importImageFile);
@@ -66,38 +59,5 @@ public class MainForm extends JFrame {
             }
         });
         getContentPane().add(saveMaskButton);
-
-        pack();
-        setVisible(true);
-    }
-
-    private File importImage() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int openFileResult = fileChooser.showOpenDialog(null);
-        if (openFileResult == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-
-            return selectedFile;
-        }
-        return null;
-    }
-
-    private void saveDagosMask(Mask dagosMask) {
-        if (dagosMask != null) {
-            JFileChooser fileChooser = new JFileChooser();
-            int saveResult = fileChooser.showSaveDialog(null);
-            if (saveResult == JFileChooser.APPROVE_OPTION) {
-                try {
-                    File fileToSave = fileChooser.getSelectedFile();
-                    if (!fileToSave.getAbsolutePath().toLowerCase().endsWith(Mask.FILE_EXTENTION)) {
-                        fileToSave = new File(fileToSave.getAbsolutePath() + Mask.FILE_EXTENTION);
-                    }
-                    dagosMask.save(fileToSave);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
     }
 }

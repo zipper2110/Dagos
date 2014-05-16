@@ -20,6 +20,7 @@ public abstract class SceneBuilder {
     protected TransformGroup transformGroupMain;
     protected BranchGroup scene;
     protected Mask mask;
+    protected Mask pathologyMask;
     protected Image image;
     protected Point pointFrom;
     protected Point pointTo;
@@ -95,6 +96,11 @@ public abstract class SceneBuilder {
             }
         }
     }
+
+    public void setPathologyMask(Mask mask) {
+        this.pathologyMask = mask;
+    }
+
 
     public Image getImage() {
         return this.image;

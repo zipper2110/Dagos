@@ -20,7 +20,7 @@ public class Point {
     }
 
     public int hashCode() {
-        return this.x + this.y + this.sliceId;
+        return this.x + this.y * 513 + this.sliceId * 250000;
     }
 
     public boolean equals(Object object) {

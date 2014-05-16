@@ -3,7 +3,8 @@ package com.dagos.graphics.display;
 import com.dagos.graphics.Image;
 import com.dagos.graphics.Mask;
 import com.dagos.graphics.Point;
-import com.dagos.graphics.display.maskviewer.scene.SceneBuilderPointTriangles;
+import com.dagos.graphics.display.maskviewer.scene.SceneBuilder;
+import com.dagos.graphics.display.maskviewer.scene.SceneBuilderGreyQuads;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
 import javax.media.j3d.Canvas3D;
@@ -19,7 +20,7 @@ import java.awt.event.MouseWheelListener;
 public class MaskViewer3D extends Canvas3D {
 
     private SimpleUniverse universe;
-    private SceneBuilderPointTriangles sceneBuilder;
+    private SceneBuilder sceneBuilder;
 
     private double lastZoom = 0.004;
 
@@ -27,9 +28,9 @@ public class MaskViewer3D extends Canvas3D {
         super(SimpleUniverse.getPreferredConfiguration());
         setStereoEnable(true);
 
-//        sceneBuilder = new SceneBuilderGreyQuads();
+        sceneBuilder = new SceneBuilderGreyQuads();
 //        sceneBuilder = new SceneBuilderGreyTriangles();
-        sceneBuilder = new SceneBuilderPointTriangles();
+//        sceneBuilder = new SceneBuilderPointTriangles();
 
         addMouseWheelListener(new MouseWheelListener() {
             @Override
@@ -67,11 +68,12 @@ public class MaskViewer3D extends Canvas3D {
         });
     }
 
-    public void displayMask(Mask mask, Image image, Point pointFrom, Point pointTo) {
+    public void displayMask(Mask mask, Mask pathologyMask, Image image, Point pointFrom, Point pointTo) {
         if (universe != null) {
             universe.cleanup();
         }
         sceneBuilder.setMask(mask);
+        sceneBuilder.setPathologyMask(pathologyMask);
         sceneBuilder.setImage(image);
         sceneBuilder.setPointFrom(pointFrom);
         sceneBuilder.setPointTo(pointTo);

@@ -13,19 +13,16 @@ import java.io.IOException;
 /**
  * Created by Dmitry on 02.03.14.
  */
-public class MainForm extends JFrame {
+public class MainForm extends com.dagos.MainForm {
 
     private File[] importImages;
     private Image dagosImage;
 
     public MainForm() {
         super("Dagos Input");
-        createForm();
     }
 
-    public void createForm() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+    protected void createForm() {
         setLayout(new FlowLayout());
 
         JButton importButton = new JButton("Import folder");
@@ -60,16 +57,13 @@ public class MainForm extends JFrame {
             }
         });
         getContentPane().add(saveButton);
-
-        pack();
-        setVisible(true);
     }
 
     private File[] importImages() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int openFileResult = fileChooser.showOpenDialog(null);
-        if(openFileResult == JFileChooser.APPROVE_OPTION) {
+        if (openFileResult == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             File[] images = selectedFile.listFiles(new FilenameFilter() {
                 @Override
@@ -81,23 +75,5 @@ public class MainForm extends JFrame {
             return images;
         }
         return new File[0];
-    }
-
-    private void saveDagosImage(Image dagosImage) {
-        if(dagosImage != null) {
-            JFileChooser fileChooser = new JFileChooser();
-            int saveResult = fileChooser.showSaveDialog(null);
-            if(saveResult == JFileChooser.APPROVE_OPTION) {
-                try {
-                    File fileToSave = fileChooser.getSelectedFile();
-                    if(!fileToSave.getAbsolutePath().toLowerCase().endsWith(Image.FILE_EXTENTION)) {
-                        fileToSave = new File(fileToSave.getAbsolutePath() + Image.FILE_EXTENTION);
-                    }
-                    dagosImage.save(fileToSave);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
     }
 }
